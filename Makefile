@@ -2,7 +2,11 @@ GCC=gcc
 
 MPICC=mpicc
 
-FLAGS = -ld_classic -lm -O3 #if not macOS, remove -ld_classic
+ifeq ($(shell uname), Darwin)
+	FLAGS = -ld_classic -lm -O3 #if not macOS, remove -ld_classic
+else
+	FLAGS = -lm -O3
+endif
 
 MODULES = \
 	src/Core/ \
@@ -10,7 +14,7 @@ MODULES = \
 	src/Migration/Kirchhoff \
 	src/Tools \
 	src/Forward \
-	src/Forward/FD \
+	# src/Forward/FD \
 
 # IFLAGS=-I./src/include
 
