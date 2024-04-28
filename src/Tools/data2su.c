@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
             tr->fldr = headInformation[is].is;
             tr->tracf = ir;
             tr->cdp = ((headInformation[is].firec + dtr * ir)) / dtr;
-            printf("tr->cdp=%d\n", tr->gx);
+            // printf("tr->cdp=%d\n", tr->gx);
             tr->ep = headInformation[is].is;
             tr->ns = nt;
             tr->dt = (int)(1000 * 1000 * dt);
