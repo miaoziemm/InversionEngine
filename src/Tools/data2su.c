@@ -22,8 +22,9 @@ int main(int argc, char *argv[])
     int nshot;
     int scale;
     float temp;
-    segy *tr;
-    tr = (segy *)malloc(sizeof(segy));
+    SEGY *tr;
+    tr = (SEGY *)malloc(sizeof(SEGY));
+    printf("sizeof(segy)=%lu\n", sizeof(SEGY));
 
     char *headInfo, *shotfile, *shotfilesu;
 
@@ -36,11 +37,11 @@ int main(int argc, char *argv[])
         dtr = 12.5;
     if (!getparfloat("dt", &dt))
         dt = 0.004;
-    if (!getparchar("shotfile", &shotfile))
+    if (!getparstring("shotfile", &shotfile))
         shotfile = "shot.bin";
-    if (!getparchar("headInfo", &headInfo))
+    if (!getparstring("headInfo", &headInfo))
         headInfo = "headInfo";
-    if (!getparchar("shotfilesu", &shotfilesu))
+    if (!getparstring("shotfilesu", &shotfilesu))
         shotfilesu = "shot.su";
 
     FILE *headInfofp, *shotfp, *shotfilesufp;
@@ -72,7 +73,12 @@ int main(int argc, char *argv[])
             tr->ep = headInformation[is].is;
             tr->ns = nt;
             tr->dt = 1000 * 1000 * dt;
-            fwrite(tr, 240, 1, shotfilesufp);
+            tr->tracl = ir + 1+headInformation[i].firec;
+            tr->tracr = ir + 1+headInformation[i].firec;
+            tr->fldr = headInformation[is].is;
+            tr->counit=1;
+            fwrite(tr, sizeof(SEGY), 1, shotfilesufp);
+            
             for (i = 0; i < nt; i++)
             {
                 fread(&temp, sizeof(float), 1, shotfp);
