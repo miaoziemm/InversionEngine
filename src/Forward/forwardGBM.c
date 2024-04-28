@@ -2,6 +2,7 @@
 #include <time.h>
 // #include "mpi.h"
 #include "par.h"
+#include "segy.h"
 
 int xargc;
 char **xargv;
@@ -183,6 +184,8 @@ int main(int argc, char *argv[])
 	int kt,totaltr;
 	int np, myid;
 	int useOuterreflectivity;
+	segy *tr;
+	tr = (segy *)malloc(sizeof(segy));
 
 	FILE *vfp;
 	// FILE *sfp,*dfp;
@@ -485,6 +488,7 @@ else
 	free2float(vsm);
 	free2float(origall);
 	free(headInformation);
+	free(tr);
 	// MPI_Finalize();
 
 	return 0;

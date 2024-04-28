@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "par.h": "c",
+        "main.h": "c",
+        "common.h": "c",
+        "segy.h": "c"
+    }
+}
