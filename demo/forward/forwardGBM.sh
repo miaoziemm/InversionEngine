@@ -13,8 +13,8 @@ dtr=10
 ftr=0
 dftr=0
 
-nshot=10
-dshot=700
+nshot=3
+dshot=3650
 fshot=0
 
 # forward parameters
