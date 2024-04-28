@@ -3,7 +3,7 @@ GCC=gcc
 MPICC=mpicc
 
 ifeq ($(shell uname), Darwin)
-	FLAGS = -ld_classic -lm -O3 #if not macOS, remove -ld_classic
+	FLAGS = -ld_classic -lm -O3 
 else
 	FLAGS = -lm -O3
 endif
