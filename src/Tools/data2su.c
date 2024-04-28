@@ -62,23 +62,23 @@ int main(int argc, char *argv[])
     {
         for (ir = 0; ir < headInformation[is].ntr; ir++)
         {
-            tr->trid = 11;
+            tr->trid = 1;
             tr->sx = headInformation[is].isp;
             tr->gx = headInformation[is].firec + dtr * ir;
             tr->scalco = 1;
             tr->scalel = 1;
             tr->fldr = headInformation[is].is;
             tr->tracf = ir + 1;
-            tr->cdp = tr->gx / dtr;
+            tr->cdp = (int)(tr->gx / dtr);
             tr->ep = headInformation[is].is;
             tr->ns = nt;
-            tr->dt = 1000 * 1000 * dt;
+            tr->dt = (int)(1000 * 1000 * dt);
             tr->tracl = ir + 1+headInformation[i].firec;
             tr->tracr = ir + 1+headInformation[i].firec;
             tr->fldr = headInformation[is].is;
             tr->counit=1;
+            tr->delrt=0;
             fwrite(tr, sizeof(SEGY), 1, shotfilesufp);
-            
             for (i = 0; i < nt; i++)
             {
                 fread(&temp, sizeof(float), 1, shotfp);
