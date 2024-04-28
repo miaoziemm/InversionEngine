@@ -9,12 +9,12 @@
 
 # head file parameters
 ntr=737
-dtr=12.5
+dtr=10
 ftr=0
 dftr=0
 
-nshot=3
-dshot=3000
+nshot=10
+dshot=700
 fshot=0
 
 # forward parameters
@@ -23,7 +23,7 @@ nt=750
 nx=737
 nz=750
 dt=0.004
-dx=12.5
+dx=10
 dz=4
 amax=50
 vfile=../../data/vel_marmousi # input
